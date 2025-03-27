@@ -7,4 +7,6 @@ urlpatterns = [
     path('', views.signup),
     path('loginn/', views.loginn),
     path('todopage', views.todo),
+    path('edit_todo/<int:srno>', views.edit_todo, name='edit_todo'),
+
 ]
