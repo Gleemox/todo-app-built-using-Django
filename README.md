@@ -22,3 +22,8 @@ This project is a multi-user todo application built using Django. It allows user
 - Register as a new user or log in with an existing account.
 - Add and manage your todo tasks.
 - Collaborate with other users by assigning tasks to them.
+
+## Tools
+- [Python 3.13.2](https://www.python.org/ftp/python/3.13.2/python-3.13.2-amd64.exe)
+- Django : `pip install django`
+- [Fontawesome.com](https://www.fontawesome.com)
