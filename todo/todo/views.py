@@ -1,6 +1,8 @@
 from  django . shortcuts import render, redirect # redirect from one page to another
 from django.contrib.auth.models import User # save user inputs into model
 from todo.models import TODOO # save user inputs into model
+from todo import models
+from django.contrib.auth import authenticate, login, logout # authenticate or user login
 
 # sign up page
 def signup(request):
@@ -17,4 +19,15 @@ def signup(request):
 
 
 def loginn(request):
+    if request.method == 'POST':
+        fnm=request.POST.get('fnm')
+        pwd=request.POST.get('pwd')
+        print(fnm,pwd)
+        userr=authenticate(request,username=fnm,password=pwd) # authentification 
+        if userr is not None:
+            login(request,userr)
+            return redirect('/todopage') # if the user exists in the DB show todo page
+        else:
+            return redirect('/loginn') # else stay in login page
+               
     return render(request, 'loginn.html')
