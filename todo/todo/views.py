@@ -31,3 +31,18 @@ def loginn(request):
             return redirect('/loginn') # else stay in login page
                
     return render(request, 'loginn.html')
+
+
+def todo(request):
+    if request.method == 'POST': # POST in capital letters
+        title=request.POST.get('title')
+        print(title)
+        obj=models.TODOO(title=title,user=request.user) # get the todo object related to the logged in user from database
+        obj.save() # save this object in our model TODOO
+        user=request.user        
+        res=models.TODOO.objects.filter(user=user).order_by('-date') # get all the logged in user's todo list items ordered by date
+        return redirect('/todopage',{'res':res}) # sens this user's todo list to todo page to show it on this page
+        
+    
+    res=models.TODOO.objects.filter(user=request.user).order_by('-date') # res in used in todo.html to loop and show todo list items on todo page
+    return render(request, 'todo.html',{'res':res,})
