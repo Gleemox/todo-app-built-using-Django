@@ -50,4 +50,14 @@ def todo(request):
 
 
 def edit_todo(request, srno):
-    pass
+    def edit_todo(request, srno):
+    if request.method == 'POST':
+        title = request.POST.get('title')
+        print(title)
+        obj = models.TODOO.objects.get(srno=srno) # search for todo item by id passed in parameters
+        obj.title = title # change old title to new titile
+        obj.save() # save object
+        return redirect('/todopage')
+
+    obj = models.TODOO.objects.get(srno=srno)
+    return render(request, 'edit_todo.html', {'obj': obj})
