@@ -50,7 +50,6 @@ def todo(request):
 
 
 def edit_todo(request, srno):
-    def edit_todo(request, srno):
     if request.method == 'POST':
         title = request.POST.get('title')
         print(title)
