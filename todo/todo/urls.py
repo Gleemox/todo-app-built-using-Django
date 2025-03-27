@@ -8,6 +8,7 @@ urlpatterns = [
     path('loginn/', views.loginn),
     path('todopage', views.todo),
     path('edit_todo/<int:srno>', views.edit_todo, name='edit_todo'),
-    path('delete_todo/<int:srno>', views.delete_todo), # pass serial number as integer in url to know which item to delete 
+    path('delete_todo/<int:srno>', views.delete_todo), # pass serial number as integer in url to know which item to delete
+    path('signout/', views.signout, name='signout'), 
 
 ]
