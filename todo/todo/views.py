@@ -3,6 +3,7 @@ from django.contrib.auth.models import User # save user inputs into model
 from todo.models import TODOO # save user inputs into model
 from todo import models
 from django.contrib.auth import authenticate, login, logout # authenticate or user login
+from django.contrib.auth.decorators import login_required
 
 # sign up page
 def signup(request):
@@ -28,11 +29,11 @@ def loginn(request):
             login(request,userr)
             return redirect('/todopage') # if the user exists in the DB show todo page
         else:
-            return redirect('/loginn') # else stay in login page
-               
+            return redirect('/loginn') # else stay in login page       
     return render(request, 'loginn.html')
 
 
+@login_required(login_url='/loginn')
 def todo(request):
     if request.method == 'POST': # POST in capital letters
         title=request.POST.get('title')
@@ -48,7 +49,7 @@ def todo(request):
     return render(request, 'todo.html',{'res':res,}) # save res object in todo.html file
 
 
-
+@login_required(login_url='/loginn')
 def edit_todo(request, srno):
     if request.method == 'POST':
         title = request.POST.get('title')
@@ -62,6 +63,7 @@ def edit_todo(request, srno):
     return render(request, 'edit_todo.html', {'obj': obj})
 
 
+@login_required(login_url='/loginn')
 def delete_todo(request,srno):
     print(srno)
     obj=models.TODOO.objects.get(srno=srno)
