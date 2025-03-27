@@ -60,3 +60,10 @@ def edit_todo(request, srno):
 
     obj = models.TODOO.objects.get(srno=srno)
     return render(request, 'edit_todo.html', {'obj': obj})
+
+
+def delete_todo(request,srno):
+    print(srno)
+    obj=models.TODOO.objects.get(srno=srno)
+    obj.delete()
+    return redirect('/todopage')
