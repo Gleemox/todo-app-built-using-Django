@@ -45,4 +45,9 @@ def todo(request):
         
     
     res=models.TODOO.objects.filter(user=request.user).order_by('-date') # res in used in todo.html to loop and show todo list items on todo page
-    return render(request, 'todo.html',{'res':res,})
+    return render(request, 'todo.html',{'res':res,}) # save res object in todo.html file
+
+
+
+def edit_todo(request, srno):
+    pass
