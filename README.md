@@ -27,3 +27,4 @@ This project is a multi-user todo application built using Django. It allows user
 - [Python 3.13.2](https://www.python.org/ftp/python/3.13.2/python-3.13.2-amd64.exe)
 - Django : `pip install django`
 - [Fontawesome.com](https://www.fontawesome.com)
+- [XAMPP](https://sourceforge.net/projects/xampp/files/XAMPP%20Windows/8.0.30/xampp-windows-x64-8.0.30-0-VS16-installer.exe)
